@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - ERP Rail Electr</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
+    .login-container h2 {
+      color: #1a5fb4;
+      margin-top: 0;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5a6775;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e2e6ea;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: #1a5fb4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #154fa0;
+    }
+    .error {
+      color: #b02020;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>ERP Rail Electr</h2>
+    <p style="font-size: 13px; color: #5a6775; margin-bottom: 20px;">Veuillez vous connecter pour accéder au portefeuille</p>
+    
+    <div id="error-message" class="error"></div>
+
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <label>Identifiant</label>
+        <input type="text" name="username" required autofocus>
+      </div>
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <input type="password" name="password" required>
+      </div>
+      <button type="submit" class="btn">Connexion</button>
+    </form>
+  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('error')) {
+      document.getElementById('error-message').innerText = 'Identifiant ou mot de passe incorrect.';
+    }
+  </script>
+</body>
+</html>
